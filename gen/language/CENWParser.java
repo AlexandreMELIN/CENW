@@ -168,27 +168,61 @@ public class CENWParser extends Parser {
 	}
 
 	public static class ParagraphContext extends ParserRuleContext {
+		public ParagraphContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_paragraph; }
+	 
+		public ParagraphContext() { }
+		public void copyFrom(ParagraphContext ctx) {
+			super.copyFrom(ctx);
+		}
+	}
+	public static class ParagraphWithoutQuestionContext extends ParagraphContext {
+		public TerminalNode EOF() { return getToken(CENWParser.EOF, 0); }
 		public List<Paragraph_contentContext> paragraph_content() {
 			return getRuleContexts(Paragraph_contentContext.class);
 		}
 		public Paragraph_contentContext paragraph_content(int i) {
 			return getRuleContext(Paragraph_contentContext.class,i);
 		}
-		public ParagraphContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_paragraph; }
+		public ParagraphWithoutQuestionContext(ParagraphContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof CENWListener ) ((CENWListener)listener).enterParagraph(this);
+			if ( listener instanceof CENWListener ) ((CENWListener)listener).enterParagraphWithoutQuestion(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof CENWListener ) ((CENWListener)listener).exitParagraph(this);
+			if ( listener instanceof CENWListener ) ((CENWListener)listener).exitParagraphWithoutQuestion(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CENWVisitor ) return ((CENWVisitor<? extends T>)visitor).visitParagraph(this);
+			if ( visitor instanceof CENWVisitor ) return ((CENWVisitor<? extends T>)visitor).visitParagraphWithoutQuestion(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+	public static class ParagraphWithQuestionContext extends ParagraphContext {
+		public QuestionContext question() {
+			return getRuleContext(QuestionContext.class,0);
+		}
+		public List<Paragraph_contentContext> paragraph_content() {
+			return getRuleContexts(Paragraph_contentContext.class);
+		}
+		public Paragraph_contentContext paragraph_content(int i) {
+			return getRuleContext(Paragraph_contentContext.class,i);
+		}
+		public ParagraphWithQuestionContext(ParagraphContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof CENWListener ) ((CENWListener)listener).enterParagraphWithQuestion(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof CENWListener ) ((CENWListener)listener).exitParagraphWithQuestion(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof CENWVisitor ) return ((CENWVisitor<? extends T>)visitor).visitParagraphWithQuestion(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -198,39 +232,65 @@ public class CENWParser extends Parser {
 		enterRule(_localctx, 2, RULE_paragraph);
 		int _la;
 		try {
-			int _alt;
-			enterOuterAlt(_localctx, 1);
-			{
-			setState(17); 
+			setState(30);
 			_errHandler.sync(this);
-			_alt = 1;
-			do {
-				switch (_alt) {
-				case 1:
+			switch ( getInterpreter().adaptivePredict(_input,4,_ctx) ) {
+			case 1:
+				_localctx = new ParagraphWithoutQuestionContext(_localctx);
+				enterOuterAlt(_localctx, 1);
+				{
+				{
+				setState(17); 
+				_errHandler.sync(this);
+				_la = _input.LA(1);
+				do {
 					{
 					{
 					setState(16);
 					paragraph_content();
 					}
 					}
-					break;
-				default:
-					throw new NoViableAltException(this);
+					setState(19); 
+					_errHandler.sync(this);
+					_la = _input.LA(1);
+				} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__1) | (1L << NUMBER) | (1L << SPACE) | (1L << PUNCTUATION) | (1L << WORD))) != 0) );
 				}
-				setState(19); 
-				_errHandler.sync(this);
-				_alt = getInterpreter().adaptivePredict(_input,2,_ctx);
-			} while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER );
-			setState(22);
-			_errHandler.sync(this);
-			_la = _input.LA(1);
-			if (_la==T__0) {
-				{
 				setState(21);
-				match(T__0);
+				_la = _input.LA(1);
+				if ( !(_la==EOF || _la==T__0) ) {
+				_errHandler.recoverInline(this);
 				}
-			}
-
+				else {
+					if ( _input.LA(1)==Token.EOF ) matchedEOF = true;
+					_errHandler.reportMatch(this);
+					consume();
+				}
+				}
+				break;
+			case 2:
+				_localctx = new ParagraphWithQuestionContext(_localctx);
+				enterOuterAlt(_localctx, 2);
+				{
+				{
+				setState(24); 
+				_errHandler.sync(this);
+				_la = _input.LA(1);
+				do {
+					{
+					{
+					setState(23);
+					paragraph_content();
+					}
+					}
+					setState(26); 
+					_errHandler.sync(this);
+					_la = _input.LA(1);
+				} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__1) | (1L << NUMBER) | (1L << SPACE) | (1L << PUNCTUATION) | (1L << WORD))) != 0) );
+				}
+				setState(28);
+				question();
+				}
+				break;
 			}
 		}
 		catch (RecognitionException re) {
@@ -285,49 +345,49 @@ public class CENWParser extends Parser {
 			int _alt;
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(24);
+			setState(32);
 			match(QUESTION_START);
-			setState(31);
+			setState(39);
 			_errHandler.sync(this);
-			_alt = getInterpreter().adaptivePredict(_input,5,_ctx);
+			_alt = getInterpreter().adaptivePredict(_input,6,_ctx);
 			while ( _alt!=1 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1+1 ) {
 					{
-					setState(29);
+					setState(37);
 					_errHandler.sync(this);
-					switch ( getInterpreter().adaptivePredict(_input,4,_ctx) ) {
+					switch ( getInterpreter().adaptivePredict(_input,5,_ctx) ) {
 					case 1:
 						{
-						setState(25);
+						setState(33);
 						match(SPACE);
 						}
 						break;
 					case 2:
 						{
-						setState(26);
+						setState(34);
 						match(PUNCTUATION);
 						}
 						break;
 					case 3:
 						{
-						setState(27);
+						setState(35);
 						match(NUMBER);
 						}
 						break;
 					case 4:
 						{
-						setState(28);
+						setState(36);
 						matchWildcard();
 						}
 						break;
 					}
 					} 
 				}
-				setState(33);
+				setState(41);
 				_errHandler.sync(this);
-				_alt = getInterpreter().adaptivePredict(_input,5,_ctx);
+				_alt = getInterpreter().adaptivePredict(_input,6,_ctx);
 			}
-			setState(34);
+			setState(42);
 			match(QUESTION_END);
 			}
 		}
@@ -386,7 +446,7 @@ public class CENWParser extends Parser {
 			int _alt;
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(37); 
+			setState(45); 
 			_errHandler.sync(this);
 			_alt = 1;
 			do {
@@ -394,7 +454,7 @@ public class CENWParser extends Parser {
 				case 1:
 					{
 					{
-					setState(36);
+					setState(44);
 					_la = _input.LA(1);
 					if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__1) | (1L << NUMBER) | (1L << SPACE) | (1L << PUNCTUATION) | (1L << WORD))) != 0)) ) {
 					_errHandler.recoverInline(this);
@@ -410,9 +470,9 @@ public class CENWParser extends Parser {
 				default:
 					throw new NoViableAltException(this);
 				}
-				setState(39); 
+				setState(47); 
 				_errHandler.sync(this);
-				_alt = getInterpreter().adaptivePredict(_input,6,_ctx);
+				_alt = getInterpreter().adaptivePredict(_input,7,_ctx);
 			} while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER );
 			}
 		}
@@ -428,19 +488,21 @@ public class CENWParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\13,\4\2\t\2\4\3\t"+
-		"\3\4\4\t\4\4\5\t\5\3\2\3\2\5\2\r\n\2\6\2\17\n\2\r\2\16\2\20\3\3\6\3\24"+
-		"\n\3\r\3\16\3\25\3\3\5\3\31\n\3\3\4\3\4\3\4\3\4\3\4\7\4 \n\4\f\4\16\4"+
-		"#\13\4\3\4\3\4\3\5\6\5(\n\5\r\5\16\5)\3\5\3!\2\6\2\4\6\b\2\3\4\2\4\6\t"+
-		"\n\2\60\2\16\3\2\2\2\4\23\3\2\2\2\6\32\3\2\2\2\b\'\3\2\2\2\n\f\5\4\3\2"+
-		"\13\r\5\6\4\2\f\13\3\2\2\2\f\r\3\2\2\2\r\17\3\2\2\2\16\n\3\2\2\2\17\20"+
-		"\3\2\2\2\20\16\3\2\2\2\20\21\3\2\2\2\21\3\3\2\2\2\22\24\5\b\5\2\23\22"+
-		"\3\2\2\2\24\25\3\2\2\2\25\23\3\2\2\2\25\26\3\2\2\2\26\30\3\2\2\2\27\31"+
-		"\7\3\2\2\30\27\3\2\2\2\30\31\3\2\2\2\31\5\3\2\2\2\32!\7\7\2\2\33 \7\6"+
-		"\2\2\34 \7\t\2\2\35 \7\5\2\2\36 \13\2\2\2\37\33\3\2\2\2\37\34\3\2\2\2"+
-		"\37\35\3\2\2\2\37\36\3\2\2\2 #\3\2\2\2!\"\3\2\2\2!\37\3\2\2\2\"$\3\2\2"+
-		"\2#!\3\2\2\2$%\7\b\2\2%\7\3\2\2\2&(\t\2\2\2\'&\3\2\2\2()\3\2\2\2)\'\3"+
-		"\2\2\2)*\3\2\2\2*\t\3\2\2\2\t\f\20\25\30\37!)";
+		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\13\64\4\2\t\2\4\3"+
+		"\t\3\4\4\t\4\4\5\t\5\3\2\3\2\5\2\r\n\2\6\2\17\n\2\r\2\16\2\20\3\3\6\3"+
+		"\24\n\3\r\3\16\3\25\3\3\3\3\3\3\6\3\33\n\3\r\3\16\3\34\3\3\3\3\5\3!\n"+
+		"\3\3\4\3\4\3\4\3\4\3\4\7\4(\n\4\f\4\16\4+\13\4\3\4\3\4\3\5\6\5\60\n\5"+
+		"\r\5\16\5\61\3\5\3)\2\6\2\4\6\b\2\4\3\3\3\3\4\2\4\6\t\n\29\2\16\3\2\2"+
+		"\2\4 \3\2\2\2\6\"\3\2\2\2\b/\3\2\2\2\n\f\5\4\3\2\13\r\5\6\4\2\f\13\3\2"+
+		"\2\2\f\r\3\2\2\2\r\17\3\2\2\2\16\n\3\2\2\2\17\20\3\2\2\2\20\16\3\2\2\2"+
+		"\20\21\3\2\2\2\21\3\3\2\2\2\22\24\5\b\5\2\23\22\3\2\2\2\24\25\3\2\2\2"+
+		"\25\23\3\2\2\2\25\26\3\2\2\2\26\27\3\2\2\2\27\30\t\2\2\2\30!\3\2\2\2\31"+
+		"\33\5\b\5\2\32\31\3\2\2\2\33\34\3\2\2\2\34\32\3\2\2\2\34\35\3\2\2\2\35"+
+		"\36\3\2\2\2\36\37\5\6\4\2\37!\3\2\2\2 \23\3\2\2\2 \32\3\2\2\2!\5\3\2\2"+
+		"\2\")\7\7\2\2#(\7\6\2\2$(\7\t\2\2%(\7\5\2\2&(\13\2\2\2\'#\3\2\2\2\'$\3"+
+		"\2\2\2\'%\3\2\2\2\'&\3\2\2\2(+\3\2\2\2)*\3\2\2\2)\'\3\2\2\2*,\3\2\2\2"+
+		"+)\3\2\2\2,-\7\b\2\2-\7\3\2\2\2.\60\t\3\2\2/.\3\2\2\2\60\61\3\2\2\2\61"+
+		"/\3\2\2\2\61\62\3\2\2\2\62\t\3\2\2\2\n\f\20\25\34 \')\61";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {

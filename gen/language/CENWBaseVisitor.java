@@ -24,7 +24,14 @@ public class CENWBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements C
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitParagraph(CENWParser.ParagraphContext ctx) { return visitChildren(ctx); }
+	@Override public T visitParagraphWithoutQuestion(CENWParser.ParagraphWithoutQuestionContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
+	@Override public T visitParagraphWithQuestion(CENWParser.ParagraphWithQuestionContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *

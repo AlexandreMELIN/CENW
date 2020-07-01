@@ -3,7 +3,9 @@ grammar CENW;
 //paragraph : ( LOWERCASE | UPPERCASE | SPACE)*  '\r';
 
 fiche : (paragraph question?)+ ;
-paragraph : paragraph_content+ ('\r')?;
+paragraph : (paragraph_content+ ) ('\r' | EOF) #paragraphWithoutQuestion
+            | (paragraph_content+) question #paragraphWithQuestion
+            ;
 question : QUESTION_START (SPACE | PUNCTUATION | NUMBER | . )*? QUESTION_END;
 paragraph_content : (WORD | SPACE | NUMBER | PUNCTUATION |'\n')+;
 NUMBER : '-'? INT* '.'? INT+;

@@ -18,15 +18,29 @@ public interface CENWListener extends ParseTreeListener {
 	 */
 	void exitFiche(CENWParser.FicheContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link CENWParser#paragraph}.
+	 * Enter a parse tree produced by the {@code paragraphWithoutQuestion}
+	 * labeled alternative in {@link CENWParser#paragraph}.
 	 * @param ctx the parse tree
 	 */
-	void enterParagraph(CENWParser.ParagraphContext ctx);
+	void enterParagraphWithoutQuestion(CENWParser.ParagraphWithoutQuestionContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link CENWParser#paragraph}.
+	 * Exit a parse tree produced by the {@code paragraphWithoutQuestion}
+	 * labeled alternative in {@link CENWParser#paragraph}.
 	 * @param ctx the parse tree
 	 */
-	void exitParagraph(CENWParser.ParagraphContext ctx);
+	void exitParagraphWithoutQuestion(CENWParser.ParagraphWithoutQuestionContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code paragraphWithQuestion}
+	 * labeled alternative in {@link CENWParser#paragraph}.
+	 * @param ctx the parse tree
+	 */
+	void enterParagraphWithQuestion(CENWParser.ParagraphWithQuestionContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code paragraphWithQuestion}
+	 * labeled alternative in {@link CENWParser#paragraph}.
+	 * @param ctx the parse tree
+	 */
+	void exitParagraphWithQuestion(CENWParser.ParagraphWithQuestionContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link CENWParser#question}.
 	 * @param ctx the parse tree

@@ -28,13 +28,25 @@ public class CENWBaseListener implements CENWListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterParagraph(CENWParser.ParagraphContext ctx) { }
+	@Override public void enterParagraphWithoutQuestion(CENWParser.ParagraphWithoutQuestionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitParagraph(CENWParser.ParagraphContext ctx) { }
+	@Override public void exitParagraphWithoutQuestion(CENWParser.ParagraphWithoutQuestionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterParagraphWithQuestion(CENWParser.ParagraphWithQuestionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitParagraphWithQuestion(CENWParser.ParagraphWithQuestionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
