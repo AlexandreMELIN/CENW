@@ -16,6 +16,18 @@ public class CENWBaseListener implements CENWListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterTitle(CENWParser.TitleContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitTitle(CENWParser.TitleContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterFiche(CENWParser.FicheContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -28,25 +40,13 @@ public class CENWBaseListener implements CENWListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterParagraphWithoutQuestion(CENWParser.ParagraphWithoutQuestionContext ctx) { }
+	@Override public void enterParagraph(CENWParser.ParagraphContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitParagraphWithoutQuestion(CENWParser.ParagraphWithoutQuestionContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterParagraphWithQuestion(CENWParser.ParagraphWithQuestionContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitParagraphWithQuestion(CENWParser.ParagraphWithQuestionContext ctx) { }
+	@Override public void exitParagraph(CENWParser.ParagraphContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -64,13 +64,13 @@ public class CENWBaseListener implements CENWListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterParagraph_content(CENWParser.Paragraph_contentContext ctx) { }
+	@Override public void enterContent(CENWParser.ContentContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitParagraph_content(CENWParser.Paragraph_contentContext ctx) { }
+	@Override public void exitContent(CENWParser.ContentContext ctx) { }
 
 	/**
 	 * {@inheritDoc}

@@ -11,25 +11,23 @@ import org.antlr.v4.runtime.tree.ParseTreeVisitor;
  */
 public interface CENWVisitor<T> extends ParseTreeVisitor<T> {
 	/**
+	 * Visit a parse tree produced by {@link CENWParser#title}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitTitle(CENWParser.TitleContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link CENWParser#fiche}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitFiche(CENWParser.FicheContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code paragraphWithoutQuestion}
-	 * labeled alternative in {@link CENWParser#paragraph}.
+	 * Visit a parse tree produced by {@link CENWParser#paragraph}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitParagraphWithoutQuestion(CENWParser.ParagraphWithoutQuestionContext ctx);
-	/**
-	 * Visit a parse tree produced by the {@code paragraphWithQuestion}
-	 * labeled alternative in {@link CENWParser#paragraph}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitParagraphWithQuestion(CENWParser.ParagraphWithQuestionContext ctx);
+	T visitParagraph(CENWParser.ParagraphContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link CENWParser#question}.
 	 * @param ctx the parse tree
@@ -37,9 +35,9 @@ public interface CENWVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitQuestion(CENWParser.QuestionContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link CENWParser#paragraph_content}.
+	 * Visit a parse tree produced by {@link CENWParser#content}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitParagraph_content(CENWParser.Paragraph_contentContext ctx);
+	T visitContent(CENWParser.ContentContext ctx);
 }
