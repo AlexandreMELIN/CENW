@@ -30,12 +30,13 @@ public class Main {
 
 
         //System.out.println("Data : " + data);
+
         HTMLBuilder htmlBuilder = new HTMLBuilder(data);
         BufferedWriter out = null;
-
-            out = new BufferedWriter(Files.newBufferedWriter(Paths.get("C:\\Users\\alexa\\Desktop\\UTC\\out.html")));
-            out.write(htmlBuilder.buildDoc());
-            out.close();
+        String fileSep = System.getProperty("file.separator");
+        out = new BufferedWriter(Files.newBufferedWriter(Paths.get("." + fileSep + "fiches" + fileSep + "out.html")));
+        out.write(htmlBuilder.buildDoc());
+        out.close();
 
 
 

@@ -35,6 +35,18 @@ public interface CENWVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitQuestion(CENWParser.QuestionContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link CENWParser#img}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitImg(CENWParser.ImgContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link CENWParser#img_url}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitImg_url(CENWParser.Img_urlContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link CENWParser#content}.
 	 * @param ctx the parse tree
 	 * @return the visitor result

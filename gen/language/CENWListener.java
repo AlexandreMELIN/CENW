@@ -48,6 +48,26 @@ public interface CENWListener extends ParseTreeListener {
 	 */
 	void exitQuestion(CENWParser.QuestionContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link CENWParser#img}.
+	 * @param ctx the parse tree
+	 */
+	void enterImg(CENWParser.ImgContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link CENWParser#img}.
+	 * @param ctx the parse tree
+	 */
+	void exitImg(CENWParser.ImgContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link CENWParser#img_url}.
+	 * @param ctx the parse tree
+	 */
+	void enterImg_url(CENWParser.Img_urlContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link CENWParser#img_url}.
+	 * @param ctx the parse tree
+	 */
+	void exitImg_url(CENWParser.Img_urlContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link CENWParser#content}.
 	 * @param ctx the parse tree
 	 */
