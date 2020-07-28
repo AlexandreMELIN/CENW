@@ -17,28 +17,30 @@ public class CENWParser extends Parser {
 	protected static final PredictionContextCache _sharedContextCache =
 		new PredictionContextCache();
 	public static final int
-		T__0=1, T__1=2, NUMBER=3, SPACE=4, QUESTION_START=5, QUESTION_END=6, IMG_START=7, 
-		IMG_END=8, IMG_EXTENSION=9, PUNCTUATION=10, WORD=11, INT=12, ACCENT=13, 
-		END_OF_PARAGRAPH=14;
+		T__0=1, T__1=2, T__2=3, NUMBER=4, SPACE=5, QUESTION_START=6, QUESTION_END=7, 
+		IMG_START=8, IMG_END=9, IMG_EXTENSION=10, PUNCTUATION=11, WORD=12, INT=13, 
+		ACCENT=14, END_OF_PARAGRAPH=15;
 	public static final int
-		RULE_title = 0, RULE_fiche = 1, RULE_paragraph = 2, RULE_question = 3, 
-		RULE_img = 4, RULE_img_url = 5, RULE_content = 6;
+		RULE_title = 0, RULE_summary = 1, RULE_fiche = 2, RULE_paragraph = 3, 
+		RULE_question = 4, RULE_img = 5, RULE_img_url = 6, RULE_content = 7;
 	private static String[] makeRuleNames() {
 		return new String[] {
-			"title", "fiche", "paragraph", "question", "img", "img_url", "content"
+			"title", "summary", "fiche", "paragraph", "question", "img", "img_url", 
+			"content"
 		};
 	}
 	public static final String[] ruleNames = makeRuleNames();
 
 	private static String[] makeLiteralNames() {
 		return new String[] {
-			null, "'Title:'", "'\n'", null, null, "'<<'", "'>>'", "'[['", "']]'"
+			null, "'Title:'", "'Summary:'", "'\n'", null, null, "'<<'", "'>>'", "'[['", 
+			"']]'"
 		};
 	}
 	private static final String[] _LITERAL_NAMES = makeLiteralNames();
 	private static String[] makeSymbolicNames() {
 		return new String[] {
-			null, null, null, "NUMBER", "SPACE", "QUESTION_START", "QUESTION_END", 
+			null, null, null, null, "NUMBER", "SPACE", "QUESTION_START", "QUESTION_END", 
 			"IMG_START", "IMG_END", "IMG_EXTENSION", "PUNCTUATION", "WORD", "INT", 
 			"ACCENT", "END_OF_PARAGRAPH"
 		};
@@ -129,23 +131,97 @@ public class CENWParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(14);
+			setState(16);
 			match(T__0);
-			setState(16); 
+			setState(18); 
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			do {
 				{
 				{
-				setState(15);
+				setState(17);
 				content();
 				}
 				}
-				setState(18); 
+				setState(20); 
 				_errHandler.sync(this);
 				_la = _input.LA(1);
-			} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__1) | (1L << NUMBER) | (1L << SPACE) | (1L << PUNCTUATION) | (1L << WORD) | (1L << ACCENT))) != 0) );
-			setState(20);
+			} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__2) | (1L << NUMBER) | (1L << SPACE) | (1L << PUNCTUATION) | (1L << WORD) | (1L << ACCENT))) != 0) );
+			setState(22);
+			_la = _input.LA(1);
+			if ( !(_la==EOF || _la==END_OF_PARAGRAPH) ) {
+			_errHandler.recoverInline(this);
+			}
+			else {
+				if ( _input.LA(1)==Token.EOF ) matchedEOF = true;
+				_errHandler.reportMatch(this);
+				consume();
+			}
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
+		}
+		finally {
+			exitRule();
+		}
+		return _localctx;
+	}
+
+	public static class SummaryContext extends ParserRuleContext {
+		public TerminalNode END_OF_PARAGRAPH() { return getToken(CENWParser.END_OF_PARAGRAPH, 0); }
+		public TerminalNode EOF() { return getToken(CENWParser.EOF, 0); }
+		public List<ContentContext> content() {
+			return getRuleContexts(ContentContext.class);
+		}
+		public ContentContext content(int i) {
+			return getRuleContext(ContentContext.class,i);
+		}
+		public SummaryContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_summary; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof CENWListener ) ((CENWListener)listener).enterSummary(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof CENWListener ) ((CENWListener)listener).exitSummary(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof CENWVisitor ) return ((CENWVisitor<? extends T>)visitor).visitSummary(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+
+	public final SummaryContext summary() throws RecognitionException {
+		SummaryContext _localctx = new SummaryContext(_ctx, getState());
+		enterRule(_localctx, 2, RULE_summary);
+		int _la;
+		try {
+			enterOuterAlt(_localctx, 1);
+			{
+			setState(24);
+			match(T__1);
+			setState(26); 
+			_errHandler.sync(this);
+			_la = _input.LA(1);
+			do {
+				{
+				{
+				setState(25);
+				content();
+				}
+				}
+				setState(28); 
+				_errHandler.sync(this);
+				_la = _input.LA(1);
+			} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__2) | (1L << NUMBER) | (1L << SPACE) | (1L << PUNCTUATION) | (1L << WORD) | (1L << ACCENT))) != 0) );
+			setState(30);
 			_la = _input.LA(1);
 			if ( !(_la==EOF || _la==END_OF_PARAGRAPH) ) {
 			_errHandler.recoverInline(this);
@@ -179,6 +255,9 @@ public class CENWParser extends Parser {
 		public ParagraphContext paragraph(int i) {
 			return getRuleContext(ParagraphContext.class,i);
 		}
+		public SummaryContext summary() {
+			return getRuleContext(SummaryContext.class,0);
+		}
 		public TerminalNode END_OF_PARAGRAPH() { return getToken(CENWParser.END_OF_PARAGRAPH, 0); }
 		public FicheContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -201,35 +280,45 @@ public class CENWParser extends Parser {
 
 	public final FicheContext fiche() throws RecognitionException {
 		FicheContext _localctx = new FicheContext(_ctx, getState());
-		enterRule(_localctx, 2, RULE_fiche);
+		enterRule(_localctx, 4, RULE_fiche);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(22);
+			setState(32);
 			title();
-			setState(26);
+			setState(36);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__1) | (1L << NUMBER) | (1L << SPACE) | (1L << PUNCTUATION) | (1L << WORD) | (1L << ACCENT) | (1L << END_OF_PARAGRAPH))) != 0)) {
+			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__2) | (1L << NUMBER) | (1L << SPACE) | (1L << PUNCTUATION) | (1L << WORD) | (1L << ACCENT) | (1L << END_OF_PARAGRAPH))) != 0)) {
 				{
 				{
-				setState(23);
+				setState(33);
 				paragraph();
 				}
 				}
-				setState(28);
+				setState(38);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
-			setState(29);
+			setState(40);
+			_errHandler.sync(this);
+			_la = _input.LA(1);
+			if (_la==T__1) {
+				{
+				setState(39);
+				summary();
+				}
+			}
+
+			setState(42);
 			match(EOF);
-			setState(31);
+			setState(44);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			if (_la==END_OF_PARAGRAPH) {
 				{
-				setState(30);
+				setState(43);
 				match(END_OF_PARAGRAPH);
 				}
 			}
@@ -286,59 +375,14 @@ public class CENWParser extends Parser {
 
 	public final ParagraphContext paragraph() throws RecognitionException {
 		ParagraphContext _localctx = new ParagraphContext(_ctx, getState());
-		enterRule(_localctx, 4, RULE_paragraph);
+		enterRule(_localctx, 6, RULE_paragraph);
 		int _la;
 		try {
-			setState(59);
+			setState(72);
 			_errHandler.sync(this);
-			switch ( getInterpreter().adaptivePredict(_input,7,_ctx) ) {
+			switch ( getInterpreter().adaptivePredict(_input,9,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
-				{
-				{
-				setState(34); 
-				_errHandler.sync(this);
-				_la = _input.LA(1);
-				do {
-					{
-					{
-					setState(33);
-					content();
-					}
-					}
-					setState(36); 
-					_errHandler.sync(this);
-					_la = _input.LA(1);
-				} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__1) | (1L << NUMBER) | (1L << SPACE) | (1L << PUNCTUATION) | (1L << WORD) | (1L << ACCENT))) != 0) );
-				}
-				setState(41);
-				_errHandler.sync(this);
-				_la = _input.LA(1);
-				while (_la==IMG_START) {
-					{
-					{
-					setState(38);
-					img();
-					}
-					}
-					setState(43);
-					_errHandler.sync(this);
-					_la = _input.LA(1);
-				}
-				setState(44);
-				_la = _input.LA(1);
-				if ( !(_la==EOF || _la==END_OF_PARAGRAPH) ) {
-				_errHandler.recoverInline(this);
-				}
-				else {
-					if ( _input.LA(1)==Token.EOF ) matchedEOF = true;
-					_errHandler.reportMatch(this);
-					consume();
-				}
-				}
-				break;
-			case 2:
-				enterOuterAlt(_localctx, 2);
 				{
 				{
 				setState(47); 
@@ -354,21 +398,66 @@ public class CENWParser extends Parser {
 					setState(49); 
 					_errHandler.sync(this);
 					_la = _input.LA(1);
-				} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__1) | (1L << NUMBER) | (1L << SPACE) | (1L << PUNCTUATION) | (1L << WORD) | (1L << ACCENT))) != 0) );
+				} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__2) | (1L << NUMBER) | (1L << SPACE) | (1L << PUNCTUATION) | (1L << WORD) | (1L << ACCENT))) != 0) );
 				}
-				setState(51);
-				question();
-				setState(55);
+				setState(54);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 				while (_la==IMG_START) {
 					{
 					{
-					setState(52);
+					setState(51);
 					img();
 					}
 					}
-					setState(57);
+					setState(56);
+					_errHandler.sync(this);
+					_la = _input.LA(1);
+				}
+				setState(57);
+				_la = _input.LA(1);
+				if ( !(_la==EOF || _la==END_OF_PARAGRAPH) ) {
+				_errHandler.recoverInline(this);
+				}
+				else {
+					if ( _input.LA(1)==Token.EOF ) matchedEOF = true;
+					_errHandler.reportMatch(this);
+					consume();
+				}
+				}
+				break;
+			case 2:
+				enterOuterAlt(_localctx, 2);
+				{
+				{
+				setState(60); 
+				_errHandler.sync(this);
+				_la = _input.LA(1);
+				do {
+					{
+					{
+					setState(59);
+					content();
+					}
+					}
+					setState(62); 
+					_errHandler.sync(this);
+					_la = _input.LA(1);
+				} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__2) | (1L << NUMBER) | (1L << SPACE) | (1L << PUNCTUATION) | (1L << WORD) | (1L << ACCENT))) != 0) );
+				}
+				setState(64);
+				question();
+				setState(68);
+				_errHandler.sync(this);
+				_la = _input.LA(1);
+				while (_la==IMG_START) {
+					{
+					{
+					setState(65);
+					img();
+					}
+					}
+					setState(70);
 					_errHandler.sync(this);
 					_la = _input.LA(1);
 				}
@@ -377,7 +466,7 @@ public class CENWParser extends Parser {
 			case 3:
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(58);
+				setState(71);
 				match(END_OF_PARAGRAPH);
 				}
 				break;
@@ -438,22 +527,22 @@ public class CENWParser extends Parser {
 
 	public final QuestionContext question() throws RecognitionException {
 		QuestionContext _localctx = new QuestionContext(_ctx, getState());
-		enterRule(_localctx, 6, RULE_question);
+		enterRule(_localctx, 8, RULE_question);
 		int _la;
 		try {
 			int _alt;
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(61);
+			setState(74);
 			match(QUESTION_START);
-			setState(65);
+			setState(78);
 			_errHandler.sync(this);
-			_alt = getInterpreter().adaptivePredict(_input,8,_ctx);
+			_alt = getInterpreter().adaptivePredict(_input,10,_ctx);
 			while ( _alt!=1 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1+1 ) {
 					{
 					{
-					setState(62);
+					setState(75);
 					_la = _input.LA(1);
 					if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << NUMBER) | (1L << SPACE) | (1L << PUNCTUATION) | (1L << WORD) | (1L << ACCENT))) != 0)) ) {
 					_errHandler.recoverInline(this);
@@ -466,11 +555,11 @@ public class CENWParser extends Parser {
 					}
 					} 
 				}
-				setState(67);
+				setState(80);
 				_errHandler.sync(this);
-				_alt = getInterpreter().adaptivePredict(_input,8,_ctx);
+				_alt = getInterpreter().adaptivePredict(_input,10,_ctx);
 			}
-			setState(68);
+			setState(81);
 			match(QUESTION_END);
 			}
 		}
@@ -512,15 +601,15 @@ public class CENWParser extends Parser {
 
 	public final ImgContext img() throws RecognitionException {
 		ImgContext _localctx = new ImgContext(_ctx, getState());
-		enterRule(_localctx, 8, RULE_img);
+		enterRule(_localctx, 10, RULE_img);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(70);
+			setState(83);
 			match(IMG_START);
-			setState(71);
+			setState(84);
 			img_url();
-			setState(72);
+			setState(85);
 			match(IMG_END);
 			}
 		}
@@ -574,18 +663,18 @@ public class CENWParser extends Parser {
 
 	public final Img_urlContext img_url() throws RecognitionException {
 		Img_urlContext _localctx = new Img_urlContext(_ctx, getState());
-		enterRule(_localctx, 10, RULE_img_url);
+		enterRule(_localctx, 12, RULE_img_url);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(75); 
+			setState(88); 
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			do {
 				{
 				{
-				setState(74);
+				setState(87);
 				_la = _input.LA(1);
 				if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << NUMBER) | (1L << PUNCTUATION) | (1L << WORD) | (1L << ACCENT))) != 0)) ) {
 				_errHandler.recoverInline(this);
@@ -597,11 +686,11 @@ public class CENWParser extends Parser {
 				}
 				}
 				}
-				setState(77); 
+				setState(90); 
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << NUMBER) | (1L << PUNCTUATION) | (1L << WORD) | (1L << ACCENT))) != 0) );
-			setState(79);
+			setState(92);
 			match(IMG_EXTENSION);
 			}
 		}
@@ -658,13 +747,13 @@ public class CENWParser extends Parser {
 
 	public final ContentContext content() throws RecognitionException {
 		ContentContext _localctx = new ContentContext(_ctx, getState());
-		enterRule(_localctx, 12, RULE_content);
+		enterRule(_localctx, 14, RULE_content);
 		int _la;
 		try {
 			int _alt;
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(82); 
+			setState(95); 
 			_errHandler.sync(this);
 			_alt = 1;
 			do {
@@ -672,9 +761,9 @@ public class CENWParser extends Parser {
 				case 1:
 					{
 					{
-					setState(81);
+					setState(94);
 					_la = _input.LA(1);
-					if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__1) | (1L << NUMBER) | (1L << SPACE) | (1L << PUNCTUATION) | (1L << WORD) | (1L << ACCENT))) != 0)) ) {
+					if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__2) | (1L << NUMBER) | (1L << SPACE) | (1L << PUNCTUATION) | (1L << WORD) | (1L << ACCENT))) != 0)) ) {
 					_errHandler.recoverInline(this);
 					}
 					else {
@@ -688,9 +777,9 @@ public class CENWParser extends Parser {
 				default:
 					throw new NoViableAltException(this);
 				}
-				setState(84); 
+				setState(97); 
 				_errHandler.sync(this);
-				_alt = getInterpreter().adaptivePredict(_input,10,_ctx);
+				_alt = getInterpreter().adaptivePredict(_input,12,_ctx);
 			} while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER );
 			}
 		}
@@ -706,30 +795,33 @@ public class CENWParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\20Y\4\2\t\2\4\3\t"+
-		"\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\3\2\3\2\6\2\23\n\2\r\2\16\2"+
-		"\24\3\2\3\2\3\3\3\3\7\3\33\n\3\f\3\16\3\36\13\3\3\3\3\3\5\3\"\n\3\3\4"+
-		"\6\4%\n\4\r\4\16\4&\3\4\7\4*\n\4\f\4\16\4-\13\4\3\4\3\4\3\4\6\4\62\n\4"+
-		"\r\4\16\4\63\3\4\3\4\7\48\n\4\f\4\16\4;\13\4\3\4\5\4>\n\4\3\5\3\5\7\5"+
-		"B\n\5\f\5\16\5E\13\5\3\5\3\5\3\6\3\6\3\6\3\6\3\7\6\7N\n\7\r\7\16\7O\3"+
-		"\7\3\7\3\b\6\bU\n\b\r\b\16\bV\3\b\3C\2\t\2\4\6\b\n\f\16\2\6\3\3\20\20"+
-		"\5\2\5\6\f\r\17\17\5\2\5\5\f\r\17\17\5\2\4\6\f\r\17\17\2]\2\20\3\2\2\2"+
-		"\4\30\3\2\2\2\6=\3\2\2\2\b?\3\2\2\2\nH\3\2\2\2\fM\3\2\2\2\16T\3\2\2\2"+
-		"\20\22\7\3\2\2\21\23\5\16\b\2\22\21\3\2\2\2\23\24\3\2\2\2\24\22\3\2\2"+
-		"\2\24\25\3\2\2\2\25\26\3\2\2\2\26\27\t\2\2\2\27\3\3\2\2\2\30\34\5\2\2"+
-		"\2\31\33\5\6\4\2\32\31\3\2\2\2\33\36\3\2\2\2\34\32\3\2\2\2\34\35\3\2\2"+
-		"\2\35\37\3\2\2\2\36\34\3\2\2\2\37!\7\2\2\3 \"\7\20\2\2! \3\2\2\2!\"\3"+
-		"\2\2\2\"\5\3\2\2\2#%\5\16\b\2$#\3\2\2\2%&\3\2\2\2&$\3\2\2\2&\'\3\2\2\2"+
-		"\'+\3\2\2\2(*\5\n\6\2)(\3\2\2\2*-\3\2\2\2+)\3\2\2\2+,\3\2\2\2,.\3\2\2"+
-		"\2-+\3\2\2\2./\t\2\2\2/>\3\2\2\2\60\62\5\16\b\2\61\60\3\2\2\2\62\63\3"+
-		"\2\2\2\63\61\3\2\2\2\63\64\3\2\2\2\64\65\3\2\2\2\659\5\b\5\2\668\5\n\6"+
-		"\2\67\66\3\2\2\28;\3\2\2\29\67\3\2\2\29:\3\2\2\2:>\3\2\2\2;9\3\2\2\2<"+
-		">\7\20\2\2=$\3\2\2\2=\61\3\2\2\2=<\3\2\2\2>\7\3\2\2\2?C\7\7\2\2@B\t\3"+
-		"\2\2A@\3\2\2\2BE\3\2\2\2CD\3\2\2\2CA\3\2\2\2DF\3\2\2\2EC\3\2\2\2FG\7\b"+
-		"\2\2G\t\3\2\2\2HI\7\t\2\2IJ\5\f\7\2JK\7\n\2\2K\13\3\2\2\2LN\t\4\2\2ML"+
-		"\3\2\2\2NO\3\2\2\2OM\3\2\2\2OP\3\2\2\2PQ\3\2\2\2QR\7\13\2\2R\r\3\2\2\2"+
-		"SU\t\5\2\2TS\3\2\2\2UV\3\2\2\2VT\3\2\2\2VW\3\2\2\2W\17\3\2\2\2\r\24\34"+
-		"!&+\639=COV";
+		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\21f\4\2\t\2\4\3\t"+
+		"\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\3\2\3\2\6\2\25\n\2"+
+		"\r\2\16\2\26\3\2\3\2\3\3\3\3\6\3\35\n\3\r\3\16\3\36\3\3\3\3\3\4\3\4\7"+
+		"\4%\n\4\f\4\16\4(\13\4\3\4\5\4+\n\4\3\4\3\4\5\4/\n\4\3\5\6\5\62\n\5\r"+
+		"\5\16\5\63\3\5\7\5\67\n\5\f\5\16\5:\13\5\3\5\3\5\3\5\6\5?\n\5\r\5\16\5"+
+		"@\3\5\3\5\7\5E\n\5\f\5\16\5H\13\5\3\5\5\5K\n\5\3\6\3\6\7\6O\n\6\f\6\16"+
+		"\6R\13\6\3\6\3\6\3\7\3\7\3\7\3\7\3\b\6\b[\n\b\r\b\16\b\\\3\b\3\b\3\t\6"+
+		"\tb\n\t\r\t\16\tc\3\t\3P\2\n\2\4\6\b\n\f\16\20\2\6\3\3\21\21\5\2\6\7\r"+
+		"\16\20\20\5\2\6\6\r\16\20\20\5\2\5\7\r\16\20\20\2k\2\22\3\2\2\2\4\32\3"+
+		"\2\2\2\6\"\3\2\2\2\bJ\3\2\2\2\nL\3\2\2\2\fU\3\2\2\2\16Z\3\2\2\2\20a\3"+
+		"\2\2\2\22\24\7\3\2\2\23\25\5\20\t\2\24\23\3\2\2\2\25\26\3\2\2\2\26\24"+
+		"\3\2\2\2\26\27\3\2\2\2\27\30\3\2\2\2\30\31\t\2\2\2\31\3\3\2\2\2\32\34"+
+		"\7\4\2\2\33\35\5\20\t\2\34\33\3\2\2\2\35\36\3\2\2\2\36\34\3\2\2\2\36\37"+
+		"\3\2\2\2\37 \3\2\2\2 !\t\2\2\2!\5\3\2\2\2\"&\5\2\2\2#%\5\b\5\2$#\3\2\2"+
+		"\2%(\3\2\2\2&$\3\2\2\2&\'\3\2\2\2\'*\3\2\2\2(&\3\2\2\2)+\5\4\3\2*)\3\2"+
+		"\2\2*+\3\2\2\2+,\3\2\2\2,.\7\2\2\3-/\7\21\2\2.-\3\2\2\2./\3\2\2\2/\7\3"+
+		"\2\2\2\60\62\5\20\t\2\61\60\3\2\2\2\62\63\3\2\2\2\63\61\3\2\2\2\63\64"+
+		"\3\2\2\2\648\3\2\2\2\65\67\5\f\7\2\66\65\3\2\2\2\67:\3\2\2\28\66\3\2\2"+
+		"\289\3\2\2\29;\3\2\2\2:8\3\2\2\2;<\t\2\2\2<K\3\2\2\2=?\5\20\t\2>=\3\2"+
+		"\2\2?@\3\2\2\2@>\3\2\2\2@A\3\2\2\2AB\3\2\2\2BF\5\n\6\2CE\5\f\7\2DC\3\2"+
+		"\2\2EH\3\2\2\2FD\3\2\2\2FG\3\2\2\2GK\3\2\2\2HF\3\2\2\2IK\7\21\2\2J\61"+
+		"\3\2\2\2J>\3\2\2\2JI\3\2\2\2K\t\3\2\2\2LP\7\b\2\2MO\t\3\2\2NM\3\2\2\2"+
+		"OR\3\2\2\2PQ\3\2\2\2PN\3\2\2\2QS\3\2\2\2RP\3\2\2\2ST\7\t\2\2T\13\3\2\2"+
+		"\2UV\7\n\2\2VW\5\16\b\2WX\7\13\2\2X\r\3\2\2\2Y[\t\4\2\2ZY\3\2\2\2[\\\3"+
+		"\2\2\2\\Z\3\2\2\2\\]\3\2\2\2]^\3\2\2\2^_\7\f\2\2_\17\3\2\2\2`b\t\5\2\2"+
+		"a`\3\2\2\2bc\3\2\2\2ca\3\2\2\2cd\3\2\2\2d\21\3\2\2\2\17\26\36&*.\638@"+
+		"FJP\\c";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {

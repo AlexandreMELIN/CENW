@@ -1,9 +1,9 @@
 grammar CENW;
-//title: 'Title:' + paragraph;
-//paragraph : ( LOWERCASE | UPPERCASE | SPACE)*  '\r';
+
 title : 'Title:' content+ (END_OF_PARAGRAPH | EOF);
-fiche : title (paragraph)*  EOF (END_OF_PARAGRAPH)?;
-paragraph : (content+ ) (img)* (END_OF_PARAGRAPH | EOF) //#paragraphWithoutQuestion
+summary : 'Summary:' content+ (END_OF_PARAGRAPH | EOF);
+fiche : title (paragraph)* summary? EOF (END_OF_PARAGRAPH)?;
+paragraph : (content+) (img)* (END_OF_PARAGRAPH | EOF) //#paragraphWithoutQuestion
             | (content+) question (img)* //#paragraphWithQuestion
             | END_OF_PARAGRAPH
             ;

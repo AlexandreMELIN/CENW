@@ -17,6 +17,12 @@ public interface CENWVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitTitle(CENWParser.TitleContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link CENWParser#summary}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitSummary(CENWParser.SummaryContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link CENWParser#fiche}.
 	 * @param ctx the parse tree
 	 * @return the visitor result

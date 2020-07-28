@@ -18,6 +18,16 @@ public interface CENWListener extends ParseTreeListener {
 	 */
 	void exitTitle(CENWParser.TitleContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link CENWParser#summary}.
+	 * @param ctx the parse tree
+	 */
+	void enterSummary(CENWParser.SummaryContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link CENWParser#summary}.
+	 * @param ctx the parse tree
+	 */
+	void exitSummary(CENWParser.SummaryContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link CENWParser#fiche}.
 	 * @param ctx the parse tree
 	 */

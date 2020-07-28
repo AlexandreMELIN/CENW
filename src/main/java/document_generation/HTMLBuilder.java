@@ -75,6 +75,9 @@ public final class HTMLBuilder extends DocBuilder<String>{
         }
         root.with(div(attrs(".questions")).with(questions));
         root.with(div(attrs(".content")).with(content));
+        if (summary != null){
+            root.with(summary);
+        }
         return ctx.getText();
     }
 
@@ -100,6 +103,13 @@ public final class HTMLBuilder extends DocBuilder<String>{
     }*/
 
     @Override
+    public String visitSummary(CENWParser.SummaryContext ctx) {
+        summary = div().withClass("summary")
+                .with(p(ctx.getChild(1).getText()).withClass("summary_content"));
+        return ctx.getText();
+    }
+
+    @Override
     public String visitImg(CENWParser.ImgContext ctx) {
         String imgUrl = visit(ctx.getChild(1));
         content.getLast().with(img().withSrc(imgUrl));
@@ -113,7 +123,6 @@ public final class HTMLBuilder extends DocBuilder<String>{
         String url ="file:///" + baseDir + fileSeparator + "image" + fileSeparator;
         url += ctx.getText();
         return url;
-
     }
 
     private ContainerTag root;
@@ -121,4 +130,5 @@ public final class HTMLBuilder extends DocBuilder<String>{
     private LinkedList<ContainerTag> content;
     private String path;
     private String style;
+    private ContainerTag summary;
 }

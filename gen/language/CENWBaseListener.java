@@ -28,6 +28,18 @@ public class CENWBaseListener implements CENWListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterSummary(CENWParser.SummaryContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitSummary(CENWParser.SummaryContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterFiche(CENWParser.FicheContext ctx) { }
 	/**
 	 * {@inheritDoc}

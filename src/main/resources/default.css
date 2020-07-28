@@ -20,3 +20,11 @@
     flex: 0 0 100%;
     text-align: center;
 }
+.summary{
+    flex: 0 0 100%;
+    text-align: left;
+    border-top: solid black 1px;
+}
+.summary_content{
+    padding: 1% 1% 1% 1%;
+}
